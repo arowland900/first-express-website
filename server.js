@@ -3,7 +3,10 @@ const app = express();
 const morgan = require('morgan');
 // const fs = require('fs');
 const port = 3000;
-const callbacks = require('./callbacks');
+// const callbacks = require('./callbacks');
+const root = require('./callbacks/root')
+const about = require('./callbacks/about')
+const contact = require('./callbacks/contact')
 
 // CONFIGURE 
 
@@ -17,9 +20,9 @@ const logger = (req, res, next) => {
 app.use(morgan('dev'));
 
 // ROUTES
-app.get('/', callbacks.handleRoot)
-app.get('/about', callbacks.handleAbout)
-app.get('/contact', callbacks.handleContact)
+app.get('/', root.handleRoot)
+app.get('/about', about.handleAbout)
+app.get('/contact', contact.handleContact)
 
 
 // TELL APP TO LISTEN ON PORT (CURRENTLY 3000)
